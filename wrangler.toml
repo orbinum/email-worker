@@ -1,0 +1,11 @@
+name = "email-worker"
+main = "src/index.ts"
+compatibility_date = "2024-03-01"
+
+[vars]
+# For local dev, use .dev.vars
+
+[[d1_databases]]
+binding = "DB"
+database_name = "email-db"
+database_id = "a872cd6b-90c1-486b-8e0f-f0c0c2e40d34"
