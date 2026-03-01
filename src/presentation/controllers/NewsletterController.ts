@@ -38,7 +38,7 @@ export class NewsletterController {
 
       return c.json({ success: true, message: response.message });
     } catch (error) {
-      if (error instanceof SyntaxError || (error as any).name === 'SyntaxError') {
+      if (error instanceof SyntaxError || (error instanceof Error && error.name === 'SyntaxError')) {
         return c.json({ error: 'Invalid JSON payload' }, 400);
       }
 
