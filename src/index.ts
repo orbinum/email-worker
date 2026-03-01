@@ -9,14 +9,14 @@ const app = new Hono<{ Bindings: Bindings }>();
 
 // 1. Global Middlewares
 app.use(
-    '*',
-    bodyLimit({
-        maxSize: 10 * 1024, // 10KB
-        onError: (c) => {
-            console.error('Body limit exceeded');
-            return c.json({ error: 'Payload too large' }, 413);
-        },
-    })
+  '*',
+  bodyLimit({
+    maxSize: 10 * 1024, // 10KB
+    onError: (c) => {
+      console.error('Body limit exceeded');
+      return c.json({ error: 'Payload too large' }, 413);
+    },
+  })
 );
 app.use('*', secureHeaders());
 app.use('*', corsMiddleware());

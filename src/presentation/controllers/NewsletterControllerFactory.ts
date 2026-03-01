@@ -8,8 +8,8 @@ import { CloudflareTurnstileService } from '../../infrastructure/services/Cloudf
 import { Bindings } from '../../infrastructure/types/Bindings';
 
 export const createNewsletterController = (env: Bindings) => {
-    const subscriberRepo = new D1EmailRepository(env.DB);
-    const turnstileService = new CloudflareTurnstileService(env.TURNSTILE_SECRET_KEY);
-    const subscribeUser = new SubscribeUser(subscriberRepo, turnstileService);
-    return new NewsletterController(subscribeUser);
+  const subscriberRepo = new D1EmailRepository(env.DB);
+  const turnstileService = new CloudflareTurnstileService(env.TURNSTILE_SECRET_KEY);
+  const subscribeUser = new SubscribeUser(subscriberRepo, turnstileService);
+  return new NewsletterController(subscribeUser);
 };

@@ -2,7 +2,7 @@ import { Context } from 'hono';
 import { SubscribeUser, SubscribeUserRequest } from '../../application/use-cases/SubscribeUser';
 
 export class NewsletterController {
-  constructor(private subscribeUser: SubscribeUser) { }
+  constructor(private subscribeUser: SubscribeUser) {}
 
   /**
    * Handles the subscription HTTP request.
@@ -38,7 +38,10 @@ export class NewsletterController {
 
       return c.json({ success: true, message: response.message });
     } catch (error) {
-      if (error instanceof SyntaxError || (error instanceof Error && error.name === 'SyntaxError')) {
+      if (
+        error instanceof SyntaxError ||
+        (error instanceof Error && error.name === 'SyntaxError')
+      ) {
         return c.json({ error: 'Invalid JSON payload' }, 400);
       }
 
