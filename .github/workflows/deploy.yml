@@ -16,20 +16,17 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-          cache-dependency-path: email-worker/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: npm ci
-        working-directory: email-worker
 
       # We run tests again before deploying to ensure safety
       - name: Run Tests
         run: npm test
-        working-directory: email-worker
 
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          workingDirectory: 'email-worker'
